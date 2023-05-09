@@ -3,7 +3,7 @@ const Car = require("./cars-model");
 const {
   checkCarId,
   checkCarPayload,
-  checkVinNumberUnique,
+  //   checkVinNumberUnique,
   checkVinNumberValid,
 } = require("../cars/cars-middleware");
 
@@ -32,14 +32,14 @@ router.get("/:id", checkCarId, (req, res, next) => {
 router.post(
   "/",
   checkCarPayload,
-//   checkVinNumberUnique,
-//   checkVinNumberValid,
+  checkVinNumberValid,
+  //   checkVinNumberUnique,
   (req, res, next) => {
     Car.create(req.body)
-        .then((car) => {
-            res.json(car);
-        })
-        .catch(next);
+      .then((car) => {
+        res.json(car);
+      })
+      .catch(next);
   }
 );
 
