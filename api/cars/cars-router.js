@@ -3,7 +3,7 @@ const Car = require("./cars-model");
 const {
   checkCarId,
   checkCarPayload,
-  //   checkVinNumberUnique,
+  checkVinNumberUnique,
   checkVinNumberValid,
 } = require("../cars/cars-middleware");
 
@@ -33,7 +33,7 @@ router.post(
   "/",
   checkCarPayload,
   checkVinNumberValid,
-  //   checkVinNumberUnique,
+  checkVinNumberUnique,
   (req, res, next) => {
     Car.create(req.body)
       .then((car) => {
