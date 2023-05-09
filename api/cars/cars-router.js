@@ -29,15 +29,19 @@ router.get("/:id", checkCarId, (req, res, next) => {
     .catch(next);
 });
 
-// router.post(
-//   "/",
-//   checkCarPayload,
+router.post(
+  "/",
+  checkCarPayload,
 //   checkVinNumberUnique,
 //   checkVinNumberValid,
-//   (req, res, next) => {
-//     Car.create(req.body).then().catch(next);
-//   }
-// );
+  (req, res, next) => {
+    Car.create(req.body)
+        .then((car) => {
+            res.json(car);
+        })
+        .catch(next);
+  }
+);
 
 //eslint-disable-next-line
 router.use((err, req, res, next) => {

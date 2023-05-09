@@ -17,7 +17,18 @@ const checkCarId = async (req, res, next) => {
 };
 
 const checkCarPayload = (req, res, next) => {
-  // DO YOUR MAGIC
+  const { vin, make, model, mileage } = req.body;
+  const missingFields = ["vin", "make", "model", "mileage"].filter(
+    (field) => !req.body[field]
+  );
+  if (missingFields.length > 0) {
+    const fieldName = missingFields.join(", ");
+    res.status(400).json({
+      message: `${fieldName} is missing`,
+    });
+  } else {
+    next();
+  }
 };
 
 const checkVinNumberValid = (req, res, next) => {
