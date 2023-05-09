@@ -17,7 +17,6 @@ const checkCarId = async (req, res, next) => {
 };
 
 const checkCarPayload = (req, res, next) => {
-  const { vin, make, model, mileage } = req.body;
   const missingFields = ["vin", "make", "model", "mileage"].filter(
     (field) => !req.body[field]
   );
